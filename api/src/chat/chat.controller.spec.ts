@@ -16,10 +16,4 @@ describe("FsController", () => {
 
         controller = app.get<ChatController>(ChatController);
     });
-
-    describe("root", () => {
-        it("should return 'Hello World!'", () => {
-            expect(controller.getHello()).toBe("Hello World!");
-        });
-    });
 });

@@ -10,7 +10,7 @@ import {
  * @param res Response
  * @param next Next callback
  */
-export async function sessionValidator(
+export async function middleware(
     req: Request,
     res: Response,
     next: NextFunction,
