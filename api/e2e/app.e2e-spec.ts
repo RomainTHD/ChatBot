@@ -5,7 +5,7 @@ import {
     TestingModule,
 } from "@nestjs/testing";
 import {AppModule} from "app/app.module";
-import {WebSocketStatus} from "utils";
+import {WebSocketStatus} from "shared";
 import * as WebSocket from "ws";
 
 describe("WebSocket initialization", () => {
