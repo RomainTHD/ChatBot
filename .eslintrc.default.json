@@ -38,6 +38,19 @@
             "always"
         ],
         "@typescript-eslint/ban-ts-comment": "warn",
+        "@typescript-eslint/explicit-member-accessibility": [
+            "error",
+            {
+                "accessibility": "explicit"
+            }
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+            "error",
+            {
+                "allowExpressions": true,
+                "allowTypedFunctionExpressions": true
+            }
+        ],
         "jsdoc/newline-after-description": 0,
         "jsdoc/require-param-type": 0,
         "jsdoc/require-returns-type": 0

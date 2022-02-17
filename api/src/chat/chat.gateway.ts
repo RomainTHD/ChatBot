@@ -16,10 +16,12 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
     private _ws;
 
     public async handleConnection(client: Socket): Promise<void> {
+        void client;
         this._ws.emit("test", "connected");
     }
 
     public async handleDisconnect(client: Socket): Promise<void> {
+        void client;
         this._ws.emit("test", "disconnected");
     }
 
@@ -31,6 +33,7 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
         };
     }
 
-    public afterInit() {
+    public afterInit(): void {
+        // Empty for now
     }
 }

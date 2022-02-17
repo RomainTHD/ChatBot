@@ -6,11 +6,11 @@ import {ChatService} from "chat/chat.service";
 
 @Controller("chat")
 export class ChatController {
-    constructor(private readonly fsService: ChatService) {
+    public constructor(private readonly chatService: ChatService) {
     }
 
     @Get()
-    getHello(): string {
-        return this.fsService.getHello();
+    public getHello(): string {
+        return this.chatService.getHello();
     }
 }

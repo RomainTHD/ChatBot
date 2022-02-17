@@ -4,6 +4,12 @@ import {
     Response,
 } from "express";
 
+/**
+ * Aoo middleware
+ * @param req Request
+ * @param res Response
+ * @param next Next callback
+ */
 export async function sessionValidator(
     req: Request,
     res: Response,
