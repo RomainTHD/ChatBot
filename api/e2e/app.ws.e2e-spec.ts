@@ -42,6 +42,7 @@ describe("WebSocket initialization", () => {
         });
 
         socket.addEventListener("error", (evt) => {
+            void evt;
             socket.close(WebSocketStatus.ABNORMAL);
         });
     });
