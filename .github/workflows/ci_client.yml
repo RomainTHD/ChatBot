@@ -7,7 +7,7 @@ on:
             - gh-pages
 
 jobs:
-    tests:
+    client-tests:
         runs-on: ubuntu-latest
 
         defaults:
@@ -33,7 +33,7 @@ jobs:
             -   name: Run client tests
                 run: npm run test:prod
 
-    e2e:
+    client-e2e:
         runs-on: ubuntu-latest
 
         defaults:
@@ -59,7 +59,7 @@ jobs:
             -   name: Run e2e client tests
                 run: npm run e2e:ci
 
-    lint:
+    client-lint:
         runs-on: ubuntu-latest
 
         defaults:
