@@ -26,6 +26,9 @@ describe("ChatController", () => {
 
         service    = app.get<ChatService>(ChatService);
         controller = app.get<ChatController>(ChatController);
+
+        void service;
+        void controller;
     });
 
     describe("basic test", () => {

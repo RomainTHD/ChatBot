@@ -10,8 +10,8 @@ import {
 import * as request from "supertest";
 import {initApplication} from "../common";
 
-const matchers = require("jest-extended");
-expect.extend(matchers);
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+expect.extend(require("jest-extended"));
 
 describe("ChatController (e2e)", () => {
     let app: INestApplication;
