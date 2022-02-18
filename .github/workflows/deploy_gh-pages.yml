@@ -35,6 +35,6 @@ jobs:
                     npm ci
 
             -   name: Deploy to GitHub pages
-                    npm run deploy:gh-pages
+                run: npm run deploy:gh-pages
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
