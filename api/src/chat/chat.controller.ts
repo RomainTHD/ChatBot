@@ -14,7 +14,7 @@ export class ChatController {
     }
 
     @Get()
-    async findAll(): Promise<Chat[]> {
+    public async findAll(): Promise<Chat[]> {
         return this.chatService.findAll();
     }
 }

@@ -15,5 +15,6 @@ describe("FsController", () => {
         }).compile();
 
         controller = app.get<ChatController>(ChatController);
+        void controller;
     });
 });

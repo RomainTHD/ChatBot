@@ -22,7 +22,7 @@ export class ChatService {
      * Get all chats
      * @returns Chat[]
      */
-    async findAll(): Promise<Chat[]> {
+    public async findAll(): Promise<Chat[]> {
         return await this.chatRepository.find();
     }
 
