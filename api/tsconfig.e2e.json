@@ -1,5 +1,11 @@
 {
     "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "rootDirs": [
+            "./src/",
+            "./e2e/"
+        ]
+    },
     "include": [
         "e2e/**/*.spec.ts"
     ]

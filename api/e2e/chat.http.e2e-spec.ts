@@ -10,10 +10,11 @@ describe("AppController (e2e)", () => {
     });
 
     it("/ (GET)", async () => {
-        await request(app.getHttpServer())
-            .get("/")
-            .expect(200)
-            .expect("Hello World!");
+        const response = await request(app.getHttpServer())
+            .get("/chat")
+            .expect(200);
+
+        expect("data" in response.body).toBeTruthy();
     });
 
     afterAll(async () => {
