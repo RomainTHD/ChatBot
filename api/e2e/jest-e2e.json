@@ -9,6 +9,12 @@
         "../node_modules"
     ],
     "rootDir": ".",
+    "setupFiles": [
+        "./jest.setup.ts"
+    ],
+    "setupFilesAfterEnv": [
+        "jest-extended"
+    ],
     "testEnvironment": "node",
     "testRegex": ".http.e2e-spec.ts$",
     "transform": {

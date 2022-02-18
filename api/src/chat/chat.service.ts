@@ -1,19 +1,23 @@
 import {Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
-import {Chat} from "chat/chat.entity";
+import {ChatEntity} from "chat/chat.entity";
+import {
+    ChatDTO_fromClient,
+    ChatDTO_toClient,
+} from "shared/dto";
 import {Repository} from "typeorm";
 
 @Injectable()
 export class ChatService {
-    private readonly chatRepository: Repository<Chat>;
+    private readonly chatRepository: Repository<ChatEntity>;
 
     /**
      * ChatService constructor
      * @param chatRepository Chat ORM repository
      */
     public constructor(
-        @InjectRepository(Chat)
-            chatRepository: Repository<Chat>,
+        @InjectRepository(ChatEntity)
+            chatRepository: Repository<ChatEntity>,
     ) {
         this.chatRepository = chatRepository;
     }
@@ -22,8 +26,9 @@ export class ChatService {
      * Get all chats
      * @returns All chats
      */
-    public async findAll(): Promise<Chat[]> {
-        return this.chatRepository.find();
+    public async findAll(): Promise<ChatDTO_toClient[]> {
+        const chats = await this.chatRepository.find();
+        return chats.map(chat => ChatEntity.toDTO(chat));
     }
 
     /**
@@ -31,9 +36,12 @@ export class ChatService {
      * @param id Chat id
      * @returns Corresponding chat
      */
-    public async findByID(id: string): Promise<Chat | null> {
+    public async findByID(id: string): Promise<ChatDTO_toClient | null> {
         const chat = await this.chatRepository.findOne(id);
-        return chat ?? null;
+        if (!chat) {
+            return null;
+        }
+        return ChatEntity.toDTO(chat);
     }
 
     /**
@@ -41,8 +49,10 @@ export class ChatService {
      * @param chat Chat to create
      * @returns Created chat
      */
-    public async create(chat: Partial<Chat>): Promise<Chat> {
-        return this.chatRepository.save(chat);
+    public async create(
+        chat: Partial<ChatDTO_fromClient>,
+    ): Promise<ChatDTO_toClient> {
+        return ChatEntity.toDTO(await this.chatRepository.save(chat));
     }
 
     /**
@@ -51,8 +61,11 @@ export class ChatService {
      * @param chat Chat to update
      * @returns Updated chat
      */
-    public async update(id: string, chat: Partial<Chat>): Promise<Chat> {
-        return this.chatRepository.save(chat);
+    public async update(
+        id: string,
+        chat: Partial<ChatDTO_fromClient>,
+    ): Promise<ChatDTO_toClient> {
+        return ChatEntity.toDTO(await this.chatRepository.save(chat));
     }
 
     /**

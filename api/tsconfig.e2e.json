@@ -4,9 +4,14 @@
         "rootDirs": [
             "./src/",
             "./e2e/"
+        ],
+        "types": [
+            "jest",
+            "jest-extended"
         ]
     },
     "include": [
-        "e2e/**/*.spec.ts"
+        "e2e/**/*.spec.ts",
+        "node_modules/jest-extended/types/**/*.d.ts"
     ]
 }

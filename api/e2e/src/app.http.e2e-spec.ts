@@ -1,6 +1,6 @@
 import {INestApplication} from "@nestjs/common";
 import * as request from "supertest";
-import {initApplication} from "./common";
+import {initApplication} from "../common";
 
 describe("AppController (e2e)", () => {
     let app: INestApplication;

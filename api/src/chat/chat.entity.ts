@@ -1,12 +1,13 @@
+import {ChatDTO_toClient} from "shared/dto";
 import {
     Column,
     Entity,
-    PrimaryColumn,
+    PrimaryGeneratedColumn,
 } from "typeorm";
 
 @Entity()
-export class Chat {
-    @PrimaryColumn()
+export class ChatEntity {
+    @PrimaryGeneratedColumn("uuid")
     public id: string;
 
     @Column()
@@ -21,7 +22,18 @@ export class Chat {
     public content: string;
 
     @Column({
-        type: "timestamp",
+        type: "int",
+        default: Math.floor(Date.now() / 1000),
     })
-    public createdAt: Date;
+    public createdAt: number;
+
+    public static toDTO(obj: ChatEntity): ChatDTO_toClient {
+        return {
+            id: obj.id,
+            from: obj.from,
+            to: obj.to,
+            content: obj.content,
+            createdAt: obj.createdAt,
+        };
+    }
 }
