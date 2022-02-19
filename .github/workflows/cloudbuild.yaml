@@ -16,4 +16,4 @@ steps:
         dir: "api"
         args: [ "app", "deploy" ]
 
-timeout: "1600s"
+timeout: "600s"
