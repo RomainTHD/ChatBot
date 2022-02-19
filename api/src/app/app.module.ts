@@ -34,6 +34,9 @@ if (process.env.E2E_TESTING_ENABLED === "true" || !process.env.RELEASE_MODE) {
     };
 }
 
+/**
+ * The main module of the application
+ */
 @Module({
     imports: [
         ConfigModule.forRoot(),
@@ -45,6 +48,10 @@ if (process.env.E2E_TESTING_ENABLED === "true" || !process.env.RELEASE_MODE) {
     exports: [AppService, TypeOrmModule],
 })
 export class AppModule implements NestModule {
+    /**
+     * Configures the middleware of the module
+     * @param consumer Middleware consumer
+     */
     public configure(consumer: MiddlewareConsumer): void {
         consumer
             .apply(middleware)

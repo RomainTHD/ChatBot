@@ -1,3 +1,6 @@
+/**
+ * WebSocket status
+ */
 export enum WebSocketStatus {
     NORMAL                     = 1000,
     GOING_AWAY                 = 1001,

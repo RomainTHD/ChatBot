@@ -8,8 +8,10 @@ import {
 } from "@angular/platform-browser-dynamic/testing";
 
 declare const require: {
+    // eslint-disable-next-line jsdoc/require-jsdoc
     context(path: string, deep?: boolean, filter?: RegExp): {
         <T>(id: string): T;
+        // eslint-disable-next-line jsdoc/require-jsdoc
         keys(): string[];
     };
 };
