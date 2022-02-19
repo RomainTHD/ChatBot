@@ -22,7 +22,7 @@
         "format": "prettier --write \"src/**/*.ts\" \"e2e/**/*.ts\"",
         "lint": "eslint \"{src,e2e}/**/*.ts\"",
         "prebuild": "rimraf dist",
-        "start": "nest start",
+        "start": "node dist/main.js",
         "start:debug": "nest start --debug --watch",
         "start:dev": "nest start --watch",
         "start:prod": "node dist/main",
