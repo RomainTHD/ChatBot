@@ -2,15 +2,18 @@ steps:
     # Install packages
     -   name: node
         entrypoint: npm
+        dir: "api"
         args: [ "install" ]
 
     # Build prod files
     -   name: node
         entrypoint: npm
+        dir: "api"
         args: [ "run", "build" ]
 
     # Deploy to Google Cloud app engine
     -   name: "gcr.io/cloud-builders/gcloud"
+        dir: "api"
         args: [ "app", "deploy" ]
 
 timeout: "1600s"
