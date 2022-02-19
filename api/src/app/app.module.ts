@@ -15,7 +15,8 @@ import {ChatController} from "chat/chat.controller";
 import {ChatModule} from "chat/chat.module";
 
 let ormOptions: TypeOrmModuleOptions;
-if (process.env.E2E_TESTING_ENABLED === "true") {
+if (process.env.E2E_TESTING_ENABLED === "true" || !process.env.RELEASE_MODE) {
+    // FIXME: Workaround for Google Cloud deployment
     ormOptions = {
         type: "better-sqlite3",
         database: ":memory:",

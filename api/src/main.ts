@@ -12,7 +12,7 @@ import {AppModule} from "app/app.module";
     app.setGlobalPrefix("api/v1");
     app.enableCors();
     app.useWebSocketAdapter(new WsAdapter(app));
-    await app.listen(process.env.API_PORT || 3000);
+    await app.listen(process.env.API_PORT || 8080);
 
     console.log("Server running...");
 })();
