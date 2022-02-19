@@ -29,7 +29,7 @@ if (process.env.E2E_TESTING_ENABLED === "true" || !process.env.RELEASE_MODE) {
         type: "mysql",
         url: process.env.DATABASE_URL,
         autoLoadEntities: true,
-        dropSchema: process.env.RELEASE_MODE === "dev",
+        dropSchema: process.env.RELEASE_MODE === "debug",
         synchronize: process.env.RELEASE_MODE !== "prod",
     };
 }
