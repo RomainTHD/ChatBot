@@ -73,7 +73,7 @@ export class GPTBot {
         fromUser: string,
         toBot: string,
     ): Promise<string | null> {
-        const MAX_PROMPT_LENGTH = 300;
+        const MAX_PROMPT_LENGTH = 1024;
 
         /*
         Parse the discussion to an array like
@@ -89,6 +89,7 @@ export class GPTBot {
         });
 
         let prompt = "";
+
         for (let i = promptArray.length - 1; i >= 0; --i) {
             if (prompt.length + promptArray[i].length > MAX_PROMPT_LENGTH) {
                 // Avoid too long text
@@ -101,15 +102,23 @@ export class GPTBot {
         prompt += `${toBot}: `;
         // End the prompt with a "bot:"
 
+        // Start the prompt with a quick description of the AI behavior
+        prompt = "" +
+            "The following is a conversation with a teenager user. " +
+            `'${toBot}' is very friendly and teasing.` +
+            "\n" +
+            "\n" +
+            `${prompt}`;
+
         try {
             const response = await this.instance._openAIApi.createCompletion(
                 "text-davinci-001",
                 {
                     prompt: prompt,
-                    max_tokens: 300,
-                    temperature: 0.9,
-                    frequency_penalty: 0.3,
-                    presence_penalty: 0.6,
+                    max_tokens: 1024,
+                    temperature: 1.,
+                    frequency_penalty: 1.,
+                    presence_penalty: 1.,
                     stop: [
                         ` ${fromUser}: `,
                         ` ${toBot}: `,
