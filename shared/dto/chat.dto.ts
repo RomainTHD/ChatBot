@@ -13,35 +13,35 @@ export class ChatDTO_fromAPI {
      */
     @IsDefined()
     @IsString()
-    public id: string;
+    public id!: string;
 
     /**
      * From user ID
      */
     @IsDefined()
     @IsString()
-    public from: string;
+    public from!: string;
 
     /**
      * To user ID
      */
     @IsDefined()
     @IsString()
-    public to: string;
+    public to!: string;
 
     /**
      * Message content
      */
     @IsDefined()
     @IsString()
-    public content: string;
+    public content!: string;
 
     /**
      * Message creation date
      */
     @IsDefined()
     @IsNumber()
-    public createdAt: number;
+    public createdAt!: number;
 }
 
 /**
@@ -53,21 +53,21 @@ export class ChatDTO_toAPI {
      */
     @IsDefined()
     @IsString()
-    public from: string;
+    public from!: string;
 
     /**
      * To user ID
      */
     @IsDefined()
     @IsString()
-    public to: string;
+    public to!: string;
 
     /**
      * Message content
      */
     @IsDefined()
     @IsString()
-    public content: string;
+    public content!: string;
 }
 
 /**
