@@ -13,9 +13,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 5000);
 
+/**
+ * App component
+ */
+
 let AppComponent = /*#__PURE__*/(() => {
   class AppComponent {
     constructor() {
+      /**
+       * App title
+       */
       this.title = "ChatBot";
     }
 
@@ -61,6 +68,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+/**
+ * App module
+ */
 
 let AppModule = /*#__PURE__*/(() => {
   class AppModule {}
