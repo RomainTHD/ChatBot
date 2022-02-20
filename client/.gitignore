@@ -42,3 +42,7 @@ cypress/screenshots/*
 cypress/integration/_generated/*
 cypress/data/migration/generated/*.csv
 cypress/build/*
+
+
+*.prod.ts
+*.dev.ts
