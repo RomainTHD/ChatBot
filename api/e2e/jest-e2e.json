@@ -16,7 +16,7 @@
         "jest-extended"
     ],
     "testEnvironment": "node",
-    "testRegex": ".http.e2e-spec.ts$",
+    "testRegex": ".e2e-spec.ts$",
     "transform": {
         "^.+\\.(t|j)s$": "ts-jest"
     }

@@ -1,7 +1,7 @@
 /**
  * WebSocket status
  */
-export enum WebSocketStatus {
+export enum WebsocketStatus {
     NORMAL                     = 1000,
     GOING_AWAY                 = 1001,
     PROTOCOL_ERROR             = 1002,

@@ -1,62 +1,60 @@
 import {
-    MessageBody,
     OnGatewayConnection,
     OnGatewayDisconnect,
-    OnGatewayInit,
-    SubscribeMessage,
     WebSocketGateway,
     WebSocketServer,
-    WsResponse,
 } from "@nestjs/websockets";
-import {Socket} from "socket.io";
+import {ConfiguredWebSocket} from "com";
+import {
+    Server,
+    WebSocket,
+} from "ws";
 
 /**
  * WebSocket Gateway for Chat
  */
 @WebSocketGateway()
-export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     /**
      * WebSocket server
      * @private
      */
     @WebSocketServer()
-    private _ws;
+    private _ws: Server;
+
+    /**
+     * Connected clients
+     * TODO: Populate the client map
+     * @private
+     */
+    private _clients: Map<string, ConfiguredWebSocket> = new Map();
 
     /**
      * Called when a new connection is established
      * @param client Socket client
      */
-    public async handleConnection(client: Socket): Promise<void> {
-        void client;
-        this._ws.emit("test", "connected");
+    public async handleConnection(client: WebSocket): Promise<void> {
+        const ws = new ConfiguredWebSocket(
+            client,
+        );
+
+        ws.onMessage("ping", () => this.onPing(ws));
     }
 
     /**
      * Called when a connection is closed
      * @param client Socket client
      */
-    public async handleDisconnect(client: Socket): Promise<void> {
+    public async handleDisconnect(client: WebSocket): Promise<void> {
         void client;
-        this._ws.emit("test", "disconnected");
+        // TODO: Remove client from map
     }
 
     /**
-     * Called when the gateway receives a chat message
-     * @param data Message data
-     * @returns WebSocket response
+     * Called when the gateway receives a ping message
+     * @param ws WebSocket
      */
-    @SubscribeMessage("chat")
-    public onChat(@MessageBody() data: string): WsResponse<string> {
-        return {
-            event: "chat",
-            data,
-        };
-    }
-
-    /**
-     * Called when the gateway is initialized
-     */
-    public afterInit(): void {
-        // Empty for now
+    public onPing(ws: ConfiguredWebSocket): void {
+        ws.send("pong");
     }
 }
