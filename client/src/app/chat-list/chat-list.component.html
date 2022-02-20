@@ -1,0 +1,9 @@
+<div class="chat-list-component">
+    <div #scrollContainer class="chat-list">
+        <div class="chat" *ngFor="let chat of chats">
+            <b>{{ chat.from }}</b>: {{ chat.content }}
+        </div>
+    </div>
+
+    <app-new-chat></app-new-chat>
+</div>

@@ -1,0 +1,19 @@
+.chat-list-component {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 1vw;
+    padding: 1vw;
+
+    .chat {
+        margin: 1vh 0;
+        white-space: pre;
+    }
+
+    .chat-list {
+        background-color: white;
+        height: 70vh;
+        margin-bottom: 1vh;
+        overflow-y: scroll;
+    }
+}

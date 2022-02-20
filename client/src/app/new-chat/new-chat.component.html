@@ -1,0 +1,17 @@
+<div class="new-chat-component">
+    <div class="text-field">
+        <label for="chat">Message</label>
+        <input id="chat"
+               placeholder="Type a message..."
+               (keydown.enter)="newMessage()"
+               [(ngModel)]="chat.content"
+        >
+    </div>
+
+    <button
+        (click)="newMessage()"
+        class="btn btn-default"
+    >
+        Send
+    </button>
+</div>

@@ -1,0 +1,26 @@
+.new-chat-component {
+    width: 96vw;
+
+    .text-field {
+        display: inline-block;
+        margin-right: 1vw;
+
+        label {
+            margin-right: 0.5vw;
+        }
+
+        input {
+            font-size: 1rem;
+            padding: 5px;
+            width: 85vw;
+        }
+    }
+
+    button {
+        background-color: white;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 8px 25px;
+    }
+}
