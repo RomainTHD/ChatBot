@@ -9,7 +9,7 @@ describe("AppController (e2e)", () => {
         app = await initApplication();
     });
 
-    it("/ (GET)", async () => {
+    it("should get the base route", async () => {
         await request(app.getHttpServer())
             .get("/")
             .expect(200)
