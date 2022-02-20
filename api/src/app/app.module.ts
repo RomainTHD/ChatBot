@@ -4,6 +4,7 @@ import {
     NestModule,
 } from "@nestjs/common";
 import {ConfigModule} from "@nestjs/config";
+import {ThrottlerModule} from "@nestjs/throttler";
 import {
     TypeOrmModule,
     TypeOrmModuleOptions,
@@ -41,6 +42,10 @@ if (process.env.E2E_TESTING_ENABLED === "true" || !process.env.RELEASE_MODE) {
     imports: [
         ConfigModule.forRoot(),
         TypeOrmModule.forRoot(ormOptions),
+        ThrottlerModule.forRoot({
+            limit: 120,
+            ttl: 60,
+        }),
         ChatModule,
     ],
     controllers: [AppController],
