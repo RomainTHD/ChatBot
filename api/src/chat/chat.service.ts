@@ -34,7 +34,11 @@ export class ChatService {
      * @returns All chats
      */
     public async findAll(): Promise<ChatDTO_toClient[]> {
-        const chats = await this.chatRepository.find();
+        const chats = await this.chatRepository.find({
+            order: {
+                createdAt: "ASC",
+            },
+        });
         return chats.map(chat => ChatEntity.toDTO(chat));
     }
 
