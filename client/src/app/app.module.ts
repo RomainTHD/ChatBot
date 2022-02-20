@@ -4,6 +4,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import {AppComponent} from "./app.component";
 
+/**
+ * App module
+ */
 @NgModule({
     declarations: [
         AppComponent,

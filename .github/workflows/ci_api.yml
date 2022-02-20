@@ -32,6 +32,8 @@ jobs:
                 run: npm ci
 
             -   name: Run API tests
+                env:
+                    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
                 run: npm run test
 
     api-e2e:
@@ -59,6 +61,8 @@ jobs:
                 run: npm ci
 
             -   name: Run e2e API tests
+                env:
+                    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
                 run: npm run test:e2e
 
     api-lint:

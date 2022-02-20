@@ -7,8 +7,15 @@ import {
 } from "shared/dto";
 import {Repository} from "typeorm";
 
+/**
+ * Chat service
+ */
 @Injectable()
 export class ChatService {
+    /**
+     * Chat repository
+     * @private
+     */
     private readonly chatRepository: Repository<ChatEntity>;
 
     /**
@@ -52,7 +59,10 @@ export class ChatService {
     public async create(
         chat: Partial<ChatDTO_fromClient>,
     ): Promise<ChatDTO_toClient> {
-        return ChatEntity.toDTO(await this.chatRepository.save(chat));
+        return ChatEntity.toDTO(await this.chatRepository.save({
+            ...chat,
+            createdAt: Math.floor(Date.now() / 1000),
+        }));
     }
 
     /**
@@ -76,5 +86,29 @@ export class ChatService {
     public async delete(id: string): Promise<boolean> {
         const res = await this.chatRepository.delete(id);
         return res.affected !== 0;
+    }
+
+    /**
+     * Get a discussion between two users
+     * @param from From user
+     * @param to To user
+     * @returns Corresponding chats
+     */
+    public async getDiscussion(
+        from: string,
+        to: string,
+    ): Promise<ChatEntity[]> {
+        return this.chatRepository.find({
+            where: [{
+                from: from,
+                to: to,
+            }, {
+                from: to,
+                to: from,
+            }],
+            order: {
+                createdAt: "ASC",
+            },
+        });
     }
 }

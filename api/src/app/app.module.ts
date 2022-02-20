@@ -29,11 +29,14 @@ if (process.env.E2E_TESTING_ENABLED === "true" || !process.env.RELEASE_MODE) {
         type: "mysql",
         url: process.env.DATABASE_URL,
         autoLoadEntities: true,
-        dropSchema: process.env.RELEASE_MODE === "dev",
+        dropSchema: process.env.RELEASE_MODE === "debug",
         synchronize: process.env.RELEASE_MODE !== "prod",
     };
 }
 
+/**
+ * The main module of the application
+ */
 @Module({
     imports: [
         ConfigModule.forRoot(),
@@ -45,6 +48,10 @@ if (process.env.E2E_TESTING_ENABLED === "true" || !process.env.RELEASE_MODE) {
     exports: [AppService, TypeOrmModule],
 })
 export class AppModule implements NestModule {
+    /**
+     * Configures the middleware of the module
+     * @param consumer Middleware consumer
+     */
     public configure(consumer: MiddlewareConsumer): void {
         consumer
             .apply(middleware)

@@ -30,6 +30,7 @@
             "error",
             "unix"
         ],
+        "no-return-await": "error",
         "quotes": [
             "error",
             "double",
@@ -57,6 +58,27 @@
         ],
         "jsdoc/newline-after-description": 0,
         "jsdoc/require-param-type": 0,
-        "jsdoc/require-returns-type": 0
+        "jsdoc/require-returns-type": 0,
+        "jsdoc/require-throws": 1,
+        "jsdoc/require-jsdoc": [
+            1,
+            {
+                "require": {
+                    "ClassDeclaration": true
+                },
+                "contexts": [
+                    "ClassDeclaration",
+                    "ClassProperty",
+                    "FunctionDeclaration",
+                    "MethodDefinition",
+                    "PropertyDefinition",
+                    "TSEnumDeclaration",
+                    "TSInterfaceDeclaration",
+                    "TSMethodSignature",
+                    "TSPropertySignature",
+                    "TSTypeAliasDeclaration"
+                ]
+            }
+        ]
     }
 }
